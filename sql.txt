@@ -1,0 +1,26 @@
+Database: Sales
+
+Create database Sales;
+Use sales;
+
+1. Count the number of Salesperson whose name begin with ‘a’/’A’.
+SELECT count(sname) FROM salespeople where sname like 'A%';
+
+2. Display all the Salesperson whose all orders worth is more than Rs. 2000.
+select orders.snum,sname,sum(amt) from orders right join salespeople on
+orders.snum=salespeople.snum group by snum having sum(amt)>2000;
+
+3. Count the number of Salesperson belonging to Newyork.
+SELECT COUNT(Sname) FROM salespeople where City='Newyork';
+
+4. Display the number of Salespeople belonging to London and belonging to Paris.
+SELECT snum FROM salespeople where City='London' or City='Paris';
+
+5. Display the number of orders taken by each Salesperson and their date of orders.
+To display num of orders by each salesperson-
+
+select sname,count(onum) from salespeople right join orders on
+orders.snum=salespeople.snum group by sname;
+To display salesperson and their date of ordersselect
+sname,odate from salespeople right join orders on orders.snum=salespeople.snum
+order by sname;
